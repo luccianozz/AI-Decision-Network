@@ -38,7 +38,22 @@ model.addChanceNode(result)
 utility = gum.LabelizedVariable('Utility', 'Utility', 1)
 model.addUtilityNode(utility)
 
+# Add connections between nodes
+model.addArc(model.idFromName('Cheat 1'), model.idFromName('Trouble 1'))
+model.addArc(model.idFromName('Cheat 1'), model.idFromName('Cheat 2'))
+model.addArc(model.idFromName('Trouble 1'), model.idFromName('Cheat 2'))
+model.addArc(model.idFromName('Trouble 1'), model.idFromName('Trouble 2'))
+model.addArc(model.idFromName('Cheat 2'), model.idFromName('Trouble 2'))
+model.addArc(model.idFromName('Cheat 2'), model.idFromName('Utility'))
+model.addArc(model.idFromName('Trouble 2'), model.idFromName('Utility'))
+model.addArc(model.idFromName('Watched'), model.idFromName('Trouble 1'))
+model.addArc(model.idFromName('Watched'), model.idFromName('Trouble 2'))
 
+# Add utilities
+model.utility(model.idFromName('Utility'))[{'Trouble 2': 'true', 'Cheat 2': 'true'}] = -30
+model.utility(model.idFromName('Utility'))[{'Trouble 2': 'true', 'Cheat 2': 'false'}] = 70
+model.utility(model.idFromName('Utility'))[{'Trouble 2': 'false', 'Cheat 2': 'true'}] = -70
+model.utility(model.idFromName('Utility'))[{'Trouble 2': 'false', 'Cheat 2': 'false'}] = 100
 
-
-
+# export to pdf
+gumimage.export(model, "DecNetwork.pdf")
