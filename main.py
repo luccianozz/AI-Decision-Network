@@ -55,5 +55,8 @@ model.utility(model.idFromName('Utility'))[{'Trouble 2': 'true', 'Cheat 2': 'fal
 model.utility(model.idFromName('Utility'))[{'Trouble 2': 'false', 'Cheat 2': 'true'}] = -70
 model.utility(model.idFromName('Utility'))[{'Trouble 2': 'false', 'Cheat 2': 'false'}] = 100
 
+# Add CPT:s
+
+
 # export to pdf
 gumimage.export(model, "DecNetwork.pdf")

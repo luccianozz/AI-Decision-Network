@@ -1,5 +1,7 @@
 # Decision network
 
+![alt text](https://github.com/luccianozz/AI-Decision-Network/blob/main/dn.png?raw=true)
+
 This diagram models a decision about whether to cheat at two different time instances.
 
 Suppose 
